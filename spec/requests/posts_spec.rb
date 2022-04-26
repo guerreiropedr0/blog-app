@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe 'Users', type: :request do
+RSpec.describe 'Posts', type: :request do
   describe 'GET /index' do
-    before(:example) { get '/users' }
+    before(:example) { get '/users/:user_id/posts' }
 
     it('should respond with a successful http status') do
       expect(response).to have_http_status(:ok)
@@ -13,12 +13,12 @@ RSpec.describe 'Users', type: :request do
     end
 
     it('should include correct placeholder text') do
-      expect(response.body).to include 'Here is a list of users'
+      expect(response.body).to include 'Here is a list of posts for a given user'
     end
   end
 
   describe 'GET /show' do
-    before(:example) { get '/users/:id' }
+    before(:example) { get '/users/:user_id/posts/:id' }
 
     it('should respond with a successful http status') do
       expect(response).to have_http_status(:ok)
@@ -29,7 +29,7 @@ RSpec.describe 'Users', type: :request do
     end
 
     it('should include correct placeholder text') do
-      expect(response.body).to include 'Here is the profile for a given a user'
+      expect(response.body).to include 'Here is a specific post for a given user'
     end
   end
 end
