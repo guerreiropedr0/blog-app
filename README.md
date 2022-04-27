@@ -39,11 +39,26 @@ Install all the dependencies.
 bundle install
 ```
 
+Create and migrate the database
+
+```
+rails db:create
+rails db:migrate
+```
+
 To run the test suits
 
 ```
 rspec test
 ```
+
+To run the server
+
+```
+rails s
+```
+
+Link to to [localhost](http://localhost:3000/)
 
 ## Authors
 
