@@ -58,7 +58,7 @@ To run the server
 rails s
 ```
 
-Link to to [localhost](http://localhost:3000/)
+Link to [localhost](http://localhost:3000/)
 
 ## Authors
 
