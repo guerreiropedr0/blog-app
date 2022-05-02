@@ -11,4 +11,8 @@ class Post < ApplicationRecord
       user.update(posts_counter: 1)
     end
   end
+
+  def recent_comments
+    Comment.where(post_id: id).limit(5)
+  end
 end
