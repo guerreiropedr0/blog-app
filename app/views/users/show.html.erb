@@ -1,1 +1,33 @@
-<h1>Here is the profile for a given a user</h1>
+<div class="center flex-column mt-3 mx-3">
+  <%= render partial: "shared/user", locals: {user: @user}%>
+  <div class="w-50 w-100-mobile mb-3 bg-light p-2 border">
+    <h3>Bio</h3>
+    <p><%= @user.bio %></p>
+  </div>
+  <div class="d-flex flex-column w-50 w-100-mobile">
+    <% @user.recent_posts.each do |post| %>
+      <div class="d-flex flex-column bg-light p-2 border mb-3">
+        <h5><%= post.title %></h5>
+        <p><%= post.text %></p>
+        <p class="small align-self-end">
+          Comments
+        <span class="badge bg-secondary">
+        <% if post.comments_counter %>
+          <%= post.comments_counter %>
+        <% else %>
+          0
+        <% end %>
+        </span>
+          Likes
+          <span class="badge bg-secondary">
+        <% if post.likes_counter %>
+          <%= post.likes_counter %>
+        <% else %>
+          0
+        <% end %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to "See all posts", "#{@user.id}/posts", class: "btn btn-primary" %>
+</div>

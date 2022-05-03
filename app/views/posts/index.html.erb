@@ -1,1 +1,44 @@
-<h1>Here is a list of posts for a given user</h1>
+<div class="center flex-column mt-3 mx-3">
+   <%= render partial: "shared/user", locals: {user: @user}%>
+   <div class="d-flex flex-column w-50 w-100-mobile">
+    <% @user.posts.each do |post| %>
+      <div class="d-flex flex-column bg-light p-2 border mb-3">
+        <h5><%= post.title %></h5>
+        <p><%= post.text %></p>
+        <p class="small align-self-end">
+          Comments
+        <span class="badge bg-secondary">
+        <% if post.comments_counter %>
+          <%= post.comments_counter %>
+        <% else %>
+          0
+        <% end %>
+        </span>
+          Likes
+          <span class="badge bg-secondary">
+        <% if post.likes_counter %>
+          <%= post.likes_counter %>
+        <% else %>
+          0
+        <% end %>
+        </p>
+      <div class="d-flex flex-column">
+        <h6>Recent comments</h6>
+        <ul class="group-item">
+        <% if post.comments.empty? %>
+            <li class="list-group-item">No comments yet.</li>
+            <% else %>
+              <% post.recent_comments.each do |comment| %>
+            <li class="list-group-item">
+            <span class="lead">
+              <%= comment.author.name %>:
+            </span>
+            <%= comment.text %></li>
+            <% end %>
+            <% end %>
+        </ul>
+      </div>
+      </div>
+    <% end %>
+  </div>
+</div>
