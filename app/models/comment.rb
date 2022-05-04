@@ -6,10 +6,6 @@ class Comment < ApplicationRecord
 
   def increment_comment_counter
     post = Post.find_by(id: post_id)
-    if post.comments_counter
-      post.update(comments_counter: post.comments_counter + 1)
-    else
-      post.update(comments_counter: 1)
-    end
+    post.increment!(:comments_counter)
   end
 end
