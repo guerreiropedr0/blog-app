@@ -1,1 +1,42 @@
-<h1>Here is a specific post for a given user</h1>
+<div class="center-body mt-3">
+  <div class="d-flex flex-column bg-light p-2 border mb-3">
+    <div class="d-flex align-items-baseline">
+      <h5 class="me-auto"><%= @post.title %> by <%= @post.author.name %></h5>
+       <p class="small">
+          Comments
+          <span class="badge bg-secondary">
+            <% if @post.comments_counter %>
+              <%= @post.comments_counter %>
+            <% else %>
+              0
+            <% end %>
+          </span>
+            Likes
+            <span class="badge bg-secondary">
+              <% if @post.likes_counter %>
+                <%= @post.likes_counter %>
+              <% else %>
+                0
+              <% end %>
+        </p>
+    </div>
+    <p><%= @post.text %></p>
+    <div class="d-flex flex-column">
+      <h6>Comments</h6>
+      <ul class="group-item">
+        <% if @post.comments.empty? %>
+          <li class="list-group-item">No comments yet.</li>
+        <% else %>
+          <% @post.comments.each do |comment| %>
+            <li class="list-group-item">
+              <span class="lead">
+                <%= comment.author.name %>:
+              </span>
+            <%= comment.text %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

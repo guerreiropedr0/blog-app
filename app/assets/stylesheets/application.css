@@ -8,6 +8,11 @@ ul {
   align-items: center;
 }
 
+.center-body {
+  width: 90%;
+  margin: auto;
+}
+
 @media only screen and (max-width: 900px) {
   .w-100-mobile {
     width: 100% !important;
