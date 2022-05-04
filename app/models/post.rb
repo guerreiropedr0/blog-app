@@ -3,7 +3,9 @@ class Post < ApplicationRecord
   has_many :comments
   belongs_to :author, class_name: 'User'
 
-  def increment_counter
+  after_save :increment_post_counter
+
+  def increment_post_counter
     user = User.find_by(id: author_id)
     if user.posts_counter
       user.update(posts_counter: user.posts_counter + 1)
