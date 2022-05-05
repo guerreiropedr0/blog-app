@@ -1,0 +1,9 @@
+<div class="container">
+  <%= form_with model: @comment, url: user_post_comments_path do |form| %>
+    <div class="mb-3">
+      <%= form.label :text, "Comment:", class: "form-label" %>
+      <%= form.text_area :text, class: "form-control", placeholder: "The best place in Middle-earth" %>
+    </div>
+    <%= form.submit "Create Comment", class: "btn btn-primary" %>
+  <% end %>
+</div>

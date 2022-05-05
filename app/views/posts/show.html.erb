@@ -37,6 +37,12 @@
           <% end %>
         <% end %>
       </ul>
+      <div class="d-flex gap-2">
+        <%= link_to "Add a comment", new_user_post_comment_path(post_id: @post.id), class: "btn btn-primary align-self-start" %>
+        <%= form_with model: @like, url: user_post_likes_path(post_id: @post.id) do |form| %>
+        <%= form.submit "Like", class: "btn btn-primary" %>
+      </div>
+  <% end %>
     </div>
   </div>
 </div>

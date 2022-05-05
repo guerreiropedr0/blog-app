@@ -8,7 +8,7 @@
         <div class="d-flex flex-column bg-light p-2 border mb-3">
           <div class="d-flex align-items-center">
             <h5 class="me-auto"><%= post.title %></h5>
-            <%= link_to "See post", "posts/#{post.id}", class: "btn btn-primary" %>
+            <%= link_to "See post", user_post_path(id: post.id), class: "btn btn-primary" %>
           </div>
           <p><%= post.text %></p>
           <p class="small align-self-end">
