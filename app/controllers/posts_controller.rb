@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     @post.author = current_user
 
     if @post.save
-      redirect_to root_path
+      redirect_to root_path, notice: 'Successfully created post.'
     else
       render :new
     end
