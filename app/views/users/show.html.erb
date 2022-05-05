@@ -29,5 +29,5 @@
       </div>
     <% end %>
   </div>
-  <%= link_to "See all posts", "#{@user.id}/posts", class: "btn btn-primary" %>
+  <%= link_to "See all posts" , user_posts_path(user_id: @user.id), class: "btn btn-primary" %>
 </div>

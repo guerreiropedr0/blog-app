@@ -1,0 +1,13 @@
+<div class="container">
+  <%= form_with model: @post, url: user_posts_path do |form| %>
+    <div class="mb-3">
+      <%= form.label :title, "Title:", class: "form-label" %>
+      <%= form.text_field :title, class: "form-control", placeholder: "Misty Mountains Cold" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :text, class: "form-label" %>
+      <%= form.text_area :text, class: "form-control", placeholder: "The best place in Middle-earth" %>
+    </div>
+    <%= form.submit "Create Post", class: "btn btn-primary" %>
+  <% end %>
+</div>

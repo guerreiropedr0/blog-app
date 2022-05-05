@@ -23,6 +23,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <%= link_to "Home", users_path, class: "nav-link active" %>
+        <%= link_to "Create Post", new_user_post_path(user_id: @user.id), class: "nav-link" %>
       </div>
     </div>
   </div>
