@@ -37,6 +37,7 @@
           <% end %>
         <% end %>
       </ul>
+      <%= link_to "Add a comment", new_user_post_comment_path(post_id: @post.id), class: "btn btn-primary align-self-start" %>
     </div>
   </div>
 </div>
