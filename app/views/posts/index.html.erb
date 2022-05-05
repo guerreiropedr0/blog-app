@@ -14,19 +14,12 @@
           <p class="small align-self-end">
             Comments
             <span class="badge bg-secondary">
-              <% if post.comments_counter %>
-                <%= post.comments_counter %>
-              <% else %>
-                0
-              <% end %>
+              <%= post.comments_counter %>
             </span>
-              Likes
-              <span class="badge bg-secondary">
-                <% if post.likes_counter %>
-                  <%= post.likes_counter %>
-                <% else %>
-                  0
-                <% end %>
+            Likes
+            <span class="badge bg-secondary">
+              <%= post.likes_counter %>
+            </span>
           </p>
           <div class="d-flex flex-column">
             <h6>Recent comments</h6>

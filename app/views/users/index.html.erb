@@ -1,18 +1,15 @@
 <div class="center flex-column mt-3 mx-3">
+  <h1>Welcome to Blog App</h1>
   <% @users.each do |user| %>
     <div class="d-flex w-50 w-100-mobile mb-3">
-       <%= image_tag(user.photo, alt: "User avatar", class: "img-fluid img-thumbnail me-3") %>
+       <img src=<%= user.photo %> alt="User avatar", class="img-fluid img-thumbnail me-3">
       <div class="d-flex flex-column align-items-end justify-content-center w-100 bg-light p-2">
-        <%= link_to "Open Profile", user_path(id: user.id), class: "btn btn-primary" %>
+        <%= link_to "Open Profile", user_path(user.id), class: "btn btn-primary" %>
         <h2 class="align-self-start"><%= user.name %></h2>
         <p>
           Number of posts
           <span class="badge bg-secondary">
-            <% if user.posts_counter %>
-              <%= user.posts_counter %>
-            <% else %>
-              0
-            <% end %>
+            <%= user.posts_counter %>
           <span>
         </p>
       </div>

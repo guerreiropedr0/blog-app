@@ -1,35 +1,43 @@
 require 'rails_helper'
 
-RSpec.describe 'Posts', type: :request do
-  describe 'GET /index' do
-    before(:example) { get '/users/:user_id/posts' }
-
-    it('should respond with a successful http status') do
-      expect(response).to have_http_status(:ok)
+RSpec.describe "Posts", type: :request do
+  describe "GET /index" do
+    before(:example) do
+      @user = User.create(name: 'Pedro Guerreiro', photo: 'random_link.png', bio: 'I\'m creating a test right now!')
+      get user_posts_path(@user.id)
     end
 
-    it('should render appropriate template') do
+    it "returns http success" do
+      expect(response).to have_http_status(:success)
+    end
+
+    it "renders template" do
       expect(response).to render_template(:index)
     end
 
-    it('should include correct placeholder text') do
-      expect(response.body).to include 'Here is a list of posts for a given user'
+    it "renders placeholder text" do
+      expect(response.body).to include 'Pagination'
     end
   end
 
-  describe 'GET /show' do
-    before(:example) { get '/users/:user_id/posts/:id' }
-
-    it('should respond with a successful http status') do
-      expect(response).to have_http_status(:ok)
+  describe "GET /show" do
+    before(:example) do
+      @user = User.create(name: 'Pedro Guerreiro', photo: 'random_link.png', bio: 'I\'m creating a test right now!')
+      @post = Post.create(author_id: @user.id, title: 'Controller Spec', text: 'It\'s exciting!')
+      get user_post_path(@user.id, @post.id)
     end
 
-    it('should render appropriate template') do
+    it "returns http success" do
+      expect(response).to have_http_status(:success)
+    end
+
+    it "renders template" do
       expect(response).to render_template(:show)
     end
 
-    it('should include correct placeholder text') do
-      expect(response.body).to include 'Here is a specific post for a given user'
+    it "renders placeholder text" do
+      expect(response.body).to include 'Add a comment'
     end
   end
+
 end
