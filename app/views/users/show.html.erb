@@ -11,23 +11,16 @@
         <p><%= post.text %></p>
         <p class="small align-self-end">
           Comments
-        <span class="badge bg-secondary">
-        <% if post.comments_counter %>
-          <%= post.comments_counter %>
-        <% else %>
-          0
-        <% end %>
-        </span>
+          <span class="badge bg-secondary">
+            <%= post.comments_counter %>
+          </span>
           Likes
           <span class="badge bg-secondary">
-        <% if post.likes_counter %>
-          <%= post.likes_counter %>
-        <% else %>
-          0
-        <% end %>
+            <%= post.likes_counter %>
+          </span>
         </p>
       </div>
     <% end %>
   </div>
-  <%= link_to "See all posts" , user_posts_path(user_id: @user.id), class: "btn btn-primary" %>
+  <%= link_to "See all posts" , user_posts_path(@user.id), class: "btn btn-primary" %>
 </div>

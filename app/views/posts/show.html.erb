@@ -2,22 +2,15 @@
   <div class="d-flex flex-column bg-light p-2 border mb-3">
     <div class="d-flex align-items-baseline">
       <h5 class="me-auto"><%= @post.title %> by <%= @post.author.name %></h5>
-       <p class="small">
+        <p class="small">
           Comments
           <span class="badge bg-secondary">
-            <% if @post.comments_counter %>
-              <%= @post.comments_counter %>
-            <% else %>
-              0
-            <% end %>
+            <%= @post.comments_counter %>
           </span>
-            Likes
-            <span class="badge bg-secondary">
-              <% if @post.likes_counter %>
-                <%= @post.likes_counter %>
-              <% else %>
-                0
-              <% end %>
+          Likes
+          <span class="badge bg-secondary">
+            <%= @post.likes_counter %>
+          </span>
         </p>
     </div>
     <p><%= @post.text %></p>
@@ -27,7 +20,7 @@
         <% if @post.comments.empty? %>
           <li class="list-group-item">No comments yet.</li>
         <% else %>
-          <% @post.comments.each do |comment| %>
+          <% @post.comments.includes(:author).each do |comment| %>
             <li class="list-group-item">
               <span class="lead">
                 <%= comment.author.name %>:

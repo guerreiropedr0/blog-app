@@ -1,16 +1,11 @@
 <div class="d-flex w-50 w-100-mobile mb-3">
-       <%= image_tag(user.photo, alt: "User avatar", class: "img-fluid img-thumbnail me-3") %>
-      <div class="d-flex flex-column align-items-end justify-content-center w-100 bg-light p-2">
-        <h2 class="align-self-start"><%= user.name %></h2>
-        <p>
-          Number of posts
-          <span class="badge bg-secondary">
-            <% if user.posts_counter %>
-              <%= user.posts_counter %>
-            <% else %>
-              0
-            <% end %>
-          <span>
-        </p>
-      </div>
-    </div>
+  <img src=<%= user.photo %> alt="User avatar", class="img-fluid img-thumbnail me-3">
+  <div class="d-flex flex-column align-items-end justify-content-center w-100 bg-light p-2">
+    <h2 class="align-self-start"><%= user.name %></h2>
+    <p>Number of posts
+      <span class="badge bg-secondary">
+        <%= user.posts_counter %>
+      <span>
+    </p>
+  </div>
+</div>

@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
   def index
-    @user = User.find_by(id: params[:user_id])
+    @user = User.find(params[:user_id])
   end
 
   def show
-    @post = Post.find_by(id: params[:id])
+    @post = Post.find(params[:id])
   end
 
   def new
@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     @post.author = current_user
 
     if @post.save
-      redirect_to root_path
+      redirect_to root_path, notice: 'Successfully created post.'
     else
       render :new
     end

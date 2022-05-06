@@ -1,5 +1,12 @@
 <div class="container">
-  <%= form_with model: @comment, url: user_post_comments_path do |form| %>
+  <%= form_with model: @comment, url: user_post_comments_path, data: {turbo: false } do |form| %>
+    <% if @comment.errors.any? %>
+      <div class="alert alert-danger mt-4" role="alert">
+        <% @comment.errors.full_messages.each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+    <% end %>
     <div class="mb-3">
       <%= form.label :text, "Comment:", class: "form-label" %>
       <%= form.text_area :text, class: "form-control", placeholder: "The best place in Middle-earth" %>
