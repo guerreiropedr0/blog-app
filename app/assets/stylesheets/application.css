@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- ul {
+ul {
   padding: 0;
 }
 
