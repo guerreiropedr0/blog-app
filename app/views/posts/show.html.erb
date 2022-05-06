@@ -20,7 +20,7 @@
         <% if @post.comments.empty? %>
           <li class="list-group-item">No comments yet.</li>
         <% else %>
-          <% @post.comments.each do |comment| %>
+          <% @post.comments.includes(:author).each do |comment| %>
             <li class="list-group-item">
               <span class="lead">
                 <%= comment.author.name %>:

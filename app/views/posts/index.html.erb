@@ -4,7 +4,7 @@
     <% if @user.posts.empty? %>
       <p class="lead text-center">No posts yet!</p>
     <% else %>
-      <% @user.posts.each do |post| %>
+      <% @user.posts.includes(:comments).each do |post| %>
         <div class="d-flex flex-column bg-light p-2 border mb-3">
           <div class="d-flex align-items-center">
             <h5 class="me-auto"><%= post.title %></h5>
@@ -27,7 +27,7 @@
               <% if post.comments.empty? %>
                 <li class="list-group-item">No comments yet.</li>
               <% else %>
-                <% post.recent_comments.each do |comment| %>
+                <% post.recent_comments.includes(:author).each do |comment| %>
                   <li class="list-group-item">
                     <span class="lead">
                       <%= comment.author.name %>:
