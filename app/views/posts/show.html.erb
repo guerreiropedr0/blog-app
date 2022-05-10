@@ -35,7 +35,9 @@
         <%= form_with model: @like, url: user_post_likes_path(post_id: @post.id) do |form| %>
           <%= form.submit "Like", class: "btn btn-primary" %>
         <% end %>
+        <% if can? :manage, @post %>
         <%= button_to "Delete Post", user_post_path(@post), method: :delete, class: "btn btn-danger" %>
+        <% end %>
       </div>
     </div>
   </div>
