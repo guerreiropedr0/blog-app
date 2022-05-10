@@ -33,3 +33,13 @@ ul {
     width: 100% !important;
   }
 }
+
+.trash-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: unset;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+}
