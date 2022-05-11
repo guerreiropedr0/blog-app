@@ -7,7 +7,7 @@
   <div class="d-flex flex-column w-50 w-100-mobile">
     <% @user.recent_posts.each do |post| %>
       <div class="d-flex flex-column bg-light p-2 border mb-3">
-        <h5><%= post.title %></h5>
+        <h5><%= link_to post.title, user_post_path(@user, post.id), class: "no-style" %></h5>
         <p><%= post.text %></p>
         <p class="small align-self-end">
           Comments

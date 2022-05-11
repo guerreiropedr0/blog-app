@@ -43,3 +43,10 @@ ul {
   cursor: pointer;
   width: 30px;
 }
+
+.no-style,
+.no-style:hover,
+.no-style:active {
+  text-decoration: none;
+  color: unset;
+}
