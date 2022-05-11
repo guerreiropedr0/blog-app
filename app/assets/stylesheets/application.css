@@ -44,9 +44,7 @@ ul {
   width: 30px;
 }
 
-.no-style,
-.no-style:hover,
-.no-style:active {
+.no-style {
   text-decoration: none;
   color: unset;
 }
