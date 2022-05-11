@@ -1,8 +1,11 @@
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe 'Users', type: :system do
   context 'show page' do
     before(:each) do
+      driven_by(:rack_test)
+
       @user = User.create(name: 'Pedro Guerreiro', photo: 'https://i.pravatar.cc/150?img=12',
                           bio: 'I\'m creating a test right now!',
                           email: 'test@domain.com')
@@ -35,6 +38,8 @@ RSpec.describe 'Users', type: :system do
 
   context 'show page posts interaction' do
     before(:each) do
+      driven_by(:rack_test)
+
       @user = User.create(name: 'Pedro Guerreiro', photo: 'https://i.pravatar.cc/150?img=12',
                           bio: 'I\'m creating a test right now!',
                           email: 'test@domain.com')
@@ -74,3 +79,4 @@ RSpec.describe 'Users', type: :system do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

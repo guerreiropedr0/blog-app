@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Users', type: :system do
   context 'index page' do
     before(:each) do
+      driven_by(:rack_test)
+
       @user = User.create(name: 'Pedro Guerreiro', photo: 'https://i.pravatar.cc/150?img=12',
                           bio: 'I\'m creating a test right now!',
                           email: 'test@domain.com')
