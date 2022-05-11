@@ -21,11 +21,18 @@
           <li class="list-group-item">No comments yet.</li>
         <% else %>
           <% @post.comments.includes(:author).each do |comment| %>
-            <li class="list-group-item">
+            <li class="list-group-item position-relative ">
               <span class="lead">
                 <%= comment.author.name %>:
               </span>
-            <%= comment.text %>
+              <%= comment.text %>
+              <% if can? :destroy, comment%>
+                <%= button_to user_post_comment_path(@post, comment), method: :delete, class: "trash-btn" do%>
+                <svg class='trash-icon text-danger' viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+                </svg>
+                <%end%>
+              <% end %>
             </li>
           <% end %>
         <% end %>
@@ -33,9 +40,12 @@
       <div class="d-flex gap-2">
         <%= link_to "Add a comment", new_user_post_comment_path(post_id: @post.id), class: "btn btn-primary align-self-start" %>
         <%= form_with model: @like, url: user_post_likes_path(post_id: @post.id) do |form| %>
-        <%= form.submit "Like", class: "btn btn-primary" %>
+          <%= form.submit "Like", class: "btn btn-primary" %>
+        <% end %>
+        <% if can? :manage, @post %>
+        <%= button_to "Delete Post", user_post_path(@post), method: :delete, class: "btn btn-danger" %>
+        <% end %>
       </div>
-  <% end %>
     </div>
   </div>
 </div>

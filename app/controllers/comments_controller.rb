@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource
+
   def new
     @comment = Comment.new
   end
@@ -10,6 +12,16 @@ class CommentsController < ApplicationController
 
     if @comment.save
       redirect_to root_path, notice: 'Successfully created comment.'
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    @comment = Comment.find_by(id: params[:id])
+
+    if @comment.destroy
+      redirect_to root_path, notice: 'Successfuly deleted comment.'
     else
       render :new
     end

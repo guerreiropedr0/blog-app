@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @user = User.find(params[:user_id])
   end
@@ -17,6 +19,16 @@ class PostsController < ApplicationController
 
     if @post.save
       redirect_to root_path, notice: 'Successfully created post.'
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    @post = Post.find_by(id: params[:id])
+
+    if @post.destroy
+      redirect_to root_path, notice: 'Successfuly deleted post.'
     else
       render :new
     end
