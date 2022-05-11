@@ -7,6 +7,7 @@ RSpec.describe 'Users', type: :system do
                           bio: 'I\'m creating a test right now!',
                           email: 'test@domain.com')
       @user.confirm
+
       visit user_path(@user.id)
     end
 
