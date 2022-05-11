@@ -43,3 +43,8 @@ ul {
   cursor: pointer;
   width: 30px;
 }
+
+.no-style {
+  text-decoration: none;
+  color: unset;
+}
