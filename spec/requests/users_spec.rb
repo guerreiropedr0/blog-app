@@ -20,6 +20,7 @@ RSpec.describe 'Users', type: :request do
   describe 'GET /show' do
     before(:example) do
       @user = User.create(name: 'Pedro Guerreiro', photo: 'random_link.png', bio: 'I\'m creating a test right now!')
+      @user.confirm
       get user_path(@user.id)
     end
 
